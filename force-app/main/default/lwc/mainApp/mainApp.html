@@ -1,0 +1,23 @@
+<template>
+    <section class="main" role="main">
+        <c-product-filter onfilterchange={handleFilterChange}></c-product-filter>
+        <lightning-layout>
+            <lightning-layout-item size="8">
+                <c-product-list 
+                    onaddtocart={handleAddToCart} 
+                    products={products}
+                    aria-label="Product List">
+                </c-product-list>
+            </lightning-layout-item>
+            <lightning-layout-item size="4">
+                    <c-shopping-cart 
+                        items={cartItems} 
+                        onplaceorder={handlePlaceOrder}
+                        onincreasequantity={handleIncreaseQuantity}
+                        ondecreasequantity={handleDecreaseQuantity}
+                        aria-label="Shopping Cart">
+                    </c-shopping-cart>
+            </lightning-layout-item>
+        </lightning-layout>
+    </section>
+</template>

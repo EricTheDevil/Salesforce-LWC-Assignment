@@ -1,0 +1,18 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item >
+            <lightning-combobox
+                name="category"
+                label="Category"
+                value={selectedCategory}
+                placeholder="All"
+                options={categoryOptions}
+                onchange={handleCategoryChange}
+                variant="label-hidden"
+            ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item >
+            <lightning-button label="Filter" onclick={handleFilter}></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

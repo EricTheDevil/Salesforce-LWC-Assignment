@@ -1,0 +1,5 @@
+<template>
+    <template for:each={products.data} for:item="product">
+        <c-product-item key={product.Id} product={product} onaddtocartitem={handleAddToCartItem}></c-product-item>
+    </template>
+</template>

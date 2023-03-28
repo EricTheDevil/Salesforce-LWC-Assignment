@@ -1,0 +1,30 @@
+<template>
+    <div class="slds-grid slds-wrap slds-grid_vertical" role="region" aria-label="Shopping Cart">
+        <template if:true={cartItemsWithTotal.length}>
+            <template for:each={cartItemsWithTotal} for:item="item">
+                <div key={item.product.Id} class="slds-grid slds-wrap slds-grid_vertical-align-center slds-p-around_x-small slds-border_bottom">
+                    <div class="slds-col slds-size_4-of-6 slds-medium-size_5-of-6">
+                        <h2>{item.product.Name}</h2>
+                        <p class="slds-text-color_weak slds-m-top_x-small">Quantity: {item.quantity}</p>
+                        <p class="slds-text-color_weak slds-m-top_x-small">Price: ${item.itemTotal}</p>
+                    </div>
+                    <div class="slds-col slds-size_2-of-6 slds-medium-size_1-of-6 slds-text-align_right">
+                        <lightning-button-icon icon-name="utility:add" alternative-text="Add Quantity" variant="bare" onclick={handleIncreaseQuantity} data-id={item.product.Id} aria-label="Add Quantity"></lightning-button-icon>
+                        <lightning-button-icon icon-name="utility:down" alternative-text="Remove Quantity" variant="bare" onclick={handleDecreaseQuantity} data-id={item.product.Id} aria-label="Remove Quantity"></lightning-button-icon>
+                    </div>
+                </div>
+            </template>
+            <div class="slds-grid slds-p-around_x-small slds-border_bottom">           
+                <div class="slds-col slds-size_4-of-6 slds-medium-size_5-of-6">
+                    <h2>Total Cost: ${totalCost}</h2>
+                </div>
+            </div>
+            <div class="slds-grid slds-p-around_x-small">
+                <lightning-button label="Make an Order" onclick={handlePlaceOrder} variant="brand"></lightning-button>
+            </div>
+        </template>
+        <template if:false={cartItemsWithTotal.length}>
+            <p class="slds-m-around_medium slds-text-align_center">Your cart is empty.</p>
+        </template>
+    </div>
+</template>
